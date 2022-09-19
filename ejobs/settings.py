@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-v6_9p1k2qhqe$9v=tl1j0ab_@*%60d30%nq$cs1il0n(smtm4(
 # Making changes in DEBUG and Allowed Hosts for Heroku
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','goodwillgaming.heroku.com']
+ALLOWED_HOSTS = ['127.0.0.1','gooodwillgaming.herokuapp.com']
 
 
 # Application definition
