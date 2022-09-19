@@ -1,0 +1,149 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Network
+{% endblock title %}
+
+{% block body %}
+
+
+<!--Connection Requests-->
+<div class="py-4">
+  <div class="container">
+    <div class="row">
+      <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+        <div class="box shadow-sm border rounded bg-white mb-3 vinit-share-post">
+          <h5 class="pl-3 pt-3 pr-3 border-bottom mb-0 pb-3">
+            Connection Requests for you
+          </h5>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="p-3">
+                <div class="row">
+
+                  {% for request1 in requests %}
+                  {% if request1.is_active == True %}
+                  <div class="col-lg-3 col-md-4">
+
+                    <div class="border network-item rounded mb-3 shadow-sm">
+                      <div class="p-3 d-flex flex-column align-items-center network-item-header">
+                        <div class="dropdown-list-image m-auto">
+                          <img class="rounded-circle" src="static/img/p5.png" alt="" style="width: 5rem; height:5rem" />
+                        </div>
+                        <div class="font-weight-bold mt-4">
+                          <h6 class="font-weight-bold text-dark mb-0 text-center">
+                            {{request1.sender}}
+                          </h6>
+                          <div class="small text-black-50 text-center">
+                            Photographer at Photography
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center p-3 border-top border-bottom network-item-body">
+                        <span class="small text-primary">4 mutual connections</span>
+                      </div>
+                      <div class="network-item-footer py-3 d-flex text-center">
+                        <div class="col-6 pl-3 pr-1">
+                          <form id="accept-request-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="sender" id="sender" value="{{request1.sender}}" />
+                            <input type="hidden" name="reciever" id="reciever" value="{{request.user}}" />
+                            <input type="submit" class="btn btn-primary btn-sm btn-block" value="Accept">
+                          </form>
+                          
+                        </div>
+                        <div class="col-6 pr-3 pl-1">
+                          <button type="button" class="btn btn-outline-primary btn-sm btn-block">
+                            Reject
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
+
+<!--Friend Recommendation Section-->
+<div class="py-4">
+  <div class="container">
+    <div class="row">
+      <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+        <div class="box shadow-sm border rounded bg-white mb-3 vinit-share-post">
+          <h5 class="pl-3 pt-3 pr-3 border-bottom mb-0 pb-3">
+            More suggestions for you
+          </h5>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="p-3">
+                <div class="row">
+
+                  {% for user in userlist %}
+                  <div class="col-lg-3 col-md-4">
+
+                    <div class="border network-item rounded mb-3 shadow-sm">
+                      <div class="p-3 d-flex flex-column align-items-center network-item-header">
+                        <div class="dropdown-list-image m-auto">
+                          <img class="rounded-circle" src="static/img/p5.png" alt="" style="width: 5rem; height:5rem" />
+                        </div>
+                        <div class="font-weight-bold mt-4">
+                          <h6 class="font-weight-bold text-dark mb-0 text-center">
+                            {{user}}
+                          </h6>
+                          <div class="small text-black-50 text-center">
+                            Photographer at Photography
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center p-3 border-top border-bottom network-item-body">
+                        <span class="small text-primary">4 mutual connections</span>
+                      </div>
+                      <div class="network-item-footer py-3 d-flex text-center">
+                        <div class="col-6 pl-3 pr-1">
+                          <form id="post-form" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="sender" id="sender" value="{{request.user}}" />
+                            <input type="hidden" name="receiver" id="receiver" value="{{user}}" />
+                            <input type="submit" id="connect" class="btn btn-primary btn-sm btn-block" value="Connect">
+                          </form>
+                          
+                        </div>
+                        <div class="col-6 pr-3 pl-1">
+                          <button type="button" class="btn btn-outline-primary btn-sm btn-block">
+                            <i class="feather-user-plus"></i> Follow
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
+
+{% include 'goodwill/connect.html' %}
+{% include 'goodwill/accept-request.html' %}
+
+
+{% endblock body %}

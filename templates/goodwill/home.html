@@ -1,0 +1,114 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <!-- Main Class Center -->
+            <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+                <div class="box shadow-sm border rounded bg-white mb-3 vinit-share-post">
+                    <ul class="nav nav-justified border-bottom vinit-line-tab" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#update" role="tab"
+                                aria-controls="home" aria-selected="true"><i class="feather-edit"></i> Share an
+                                update</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#article" role="tab"
+                                aria-controls="contact" aria-selected="false"><i class="feather-clipboard"></i> Create a
+                                Post</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="update" role="tabpanel" aria-labelledby="home-tab">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="p-3 d-flex align-items-center w-100" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="/media/{{profile.pfp}}" alt="" />
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="form-control border-0 p-0 shadow-none" id="caption"
+                                            name="caption" placeholder="Write down your thoughts" />
+                                    </div>
+                                </div>
+                                <div class="border-top p-3 d-flex align-items-center">
+                                    <button type="submit" value="submit" class="btn btn-primary btn-sm">
+                                        Post Status
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade show" id="article" role="tabpanel" aria-labelledby="contact-tab">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="p-3 d-flex align-items-center w-100" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="/media/{{profile.pfp}}" alt="" />
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="form-control border-0 p-0 shadow-none" id="caption"
+                                            name="caption" placeholder="Time to write an article..." />
+
+                                        <input type="file" class="btn btn-primary btn-sm" id="myfile" name="myfile"
+                                            value="Add a photo" />
+                                    </div>
+                                </div>
+                                <div class="border-top p-3 d-flex align-items-center">
+
+                                    <button type="submit" value="submit" class="btn btn-primary btn-sm">
+                                        Post Status
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% for post in posts %}
+                <div class="box shadow-sm border rounded bg-white mb-3 vinit-post">
+                    <div class="p-3 d-flex align-items-center border-bottom vinit-post-header">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="/media/{{post.pfp}}" alt="" />
+                        </div>
+                        <div class="font-weight-bold">
+                            <div class="text-truncate">{{post.profile}}</div>
+                            <div class="small text-gray-500">{{post.headline}}</div>
+                        </div>
+                        <span class="ml-auto small">{{post.created_on}}</span>
+                    </div>
+                    {% if post.img %}
+                    <div class="p-3 border-bottom vinit-post-body">
+                        <h6 class="mb-4">
+                            {{post.caption}}
+                        </h6>
+                        <img class="img-fluid" src="/media/{{post.img}}"alt="" />
+                    </div>
+                    {% else %}
+                    <div class="p-3 border-bottom vinit-post-body">
+                        <h5 class="mb-0">
+                            {{post.caption}}
+                        </h5>
+                    </div>
+                    {% endif %}
+                    <div class="p-3 border-bottom vinit-post-footer">
+                        
+                        <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i> 16</a>
+                        <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> 8</a>
+                        <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i> 2</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

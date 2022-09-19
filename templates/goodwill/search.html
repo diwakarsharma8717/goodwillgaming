@@ -1,0 +1,86 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Search Results
+{% endblock title %}
+
+{% block body %}
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+
+            <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+                <div class="box shadow-sm border rounded bg-white mb-3 vinit-share-post">
+
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="p-3 border-top">
+                                <div class="row">
+                                    {% if profiles %}
+                                    <h5 class="box-title border-bottom">People</h5>
+                                    {% endif %}
+                                    {% for profile in profiles %}
+                                    <div class="col-md-12">
+                                        <a href="{% url 'search_people' profile.username %}">
+                                            <div class="border job-item mb-3">
+                                                <div class="d-flex align-items-center p-3 job-item-header">
+                                                    <div class="overflow-hidden mr-2">
+                                                        <h5 class="font-weight-bold text-dark mb-0 text-truncate">
+                                                            {{profile.name}}
+                                                        </h5>
+                                                        <div class="text-truncate text-primary"><span
+                                                                style="font-size: .8rem">
+                                                                {{profile.headline}}</span></div>
+                                                        <div class="small text-gray-500"><i
+                                                                class="feather-map-pin"></i><span>{{profile.location}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <img class="img-fluid ml-auto" src="/media/{{profile.pfp}}" alt="">
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+
+                                    {% if jobs %}
+                                    <h5 class="box-title border-bottom">Jobs</h5>
+                                    {% endif %}
+                                    {% for job in jobs %}
+                                    <div class="col-md-12">
+                                        <a href="{% url 'home' %}">
+                                            <div class="border job-item mb-3">
+                                                <div class="d-flex align-items-center p-3 job-item-header">
+                                                    <div class="overflow-hidden mr-2">
+                                                        <h5 class="font-weight-bold text-dark mb-0 text-truncate">
+                                                            {{job.profession}}
+                                                        </h5>
+                                                        <div class="text-truncate text-primary"><span
+                                                                style="font-size: .8rem">
+                                                                {{job.company_name}}</span></div>
+                                                        <div class="small text-gray-500"><i
+                                                                class="feather-map-pin"></i><span>{{job.location}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <img class="img-fluid ml-auto" src="/media/{{job.img}}" alt="">
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

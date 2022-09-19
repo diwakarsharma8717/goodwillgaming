@@ -1,0 +1,61 @@
+.top-container{
+    font-family: 'Sora';
+    margin-top: 50px;
+}
+
+.top-container .avatar{
+    border-radius: 50%;
+    width:80%;
+    height: 100%;
+}
+
+.top-container .button{
+    width:100%;
+    border-width: .1px;
+    border-color:#D4D4D4;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    transition: .5s ease-in-out;
+}
+
+.top-container .button:hover{
+    box-shadow:.5px .5px;
+}
+
+.genre-container{
+    font-family: 'Sora';
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #F7C5CC;
+}
+
+.genre-container .button{
+    width:40%;
+    border-width: .1px;
+    border-color:#D4D4D4;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    transition: .5s ease-in-out;
+}
+
+.genre-container .button:hover{
+    box-shadow:.5px .5px;
+}
+
+.recruiter-container{
+    margin-top: 50px;
+    padding: 15px;
+}
+
+.recruiter-container .button{
+    width:40%;
+    border-width: .1px;
+    border-color:#D4D4D4;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    transition: .5s ease-in-out;
+}
+
+.recruiter-container .button:hover{
+    box-shadow:.5px .5px;
+}

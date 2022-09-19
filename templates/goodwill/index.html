@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="static/img/fav.png">
+  <title>Sign in</title>
+
+  <link rel="stylesheet" type="text/css" href="static/vendor/slick/slick.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/vendor/slick/slick-theme.min.css" />
+
+  <link href="static/vendor/icons/feather.css" rel="stylesheet" type="text/css">
+
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand navbar-light bg-light vinit-nav-top p-2">
+    <div class="container">
+      <a class="navbar-brand mr-2" href="index.html">GoodWill Gaming<img src="" alt="">
+      </a>
+
+    </div>
+  </nav>
+
+
+  <div class="bg-white">
+    <div class="container">
+      <div class="row justify-content-center align-items-center d-flex pt-5">
+        <div class="col-md-5">
+          <div class="vinit-login py-4">
+            <div class="text-center mb-4">
+
+              <h3 class="font-weight-bold mt-3">Welcome Back</h3>
+              <p class="text-muted">Don't miss your next opportunity. Sign in to stay updated on your Professional
+                E-Sports World.</p>
+            </div>
+            <form method='post'>
+              {% csrf_token %}
+              <div class="form-group">
+                <label class="mb-1">Email or Phone</label>
+                <div class="position-relative icon-form-control">
+                  <i class="feather-user position-absolute"></i>
+                  <input type="text" class="form-control" id="loginusername" name="loginusername"
+                placeholder="name@example.com" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="mb-1">Password</label>
+                <div class="position-relative icon-form-control">
+                  <i class="feather-unlock position-absolute"></i>
+                  <input type="password" class="form-control" id="loginpassword" name="loginpassword">
+                </div>
+              </div>
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+              <button class="btn btn-primary btn-block text-uppercase" type="submit"> Sign in </button>
+              
+              <div class="py-3 d-flex align-item-center">
+                <a href="forgot-password.html">Forgot password?</a>
+                <span class="ml-auto"> New User? <a class="font-weight-bold" href="{% url 'signup' %}">Sign up Now</a></span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-5 offset-md-1 d-none d-md-none d-lg-block ">
+          <img class="" src="static/img/content creator.png" alt="" width="500px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section2">
+
+    <div class="container p-5">
+
+      <div class="row pt-5 pb-5">
+
+        <div class="col-lg-4 text-md-left">
+          <h2>Explore topics you are interested in</h2>
+        </div>
+
+        <div class="col-lg-6 offset-lg-2">
+
+          <div class="row">
+            <div class="col-12 justify-content-space-between">
+              {% for blog in blogs %}
+              <a href="{% url 'blog' blog.id %}" >
+                <div class="btn border-2 border-primary p-3 w-md-25  ml-sm-2 mt-3">{{blog}}</div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5" style="color:black">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>GoodWil Gaming
+            </h6>
+            <p>
+              Company Description
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              General
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Help Center</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">About Us</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Career</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Developers</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Contact Us</a>
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Links container
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Link1</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link2</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link3</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link4</a>
+            </p>
+          </div>
+
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Links container
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Link1</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link2</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link3</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Link4</a>
+            </p>
+          </div>
+
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2021 Copyright:
+      <span class="text-reset fw-bold">Company Name</span>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+
+
+  <script src="static/vendor/jquery/jquery.min.js" type="2021f99e26aa0ff2d9f9a196-text/javascript"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js" type="2021f99e26aa0ff2d9f9a196-text/javascript"></script>
+
+  <script type="2021f99e26aa0ff2d9f9a196-text/javascript" src="static/vendor/slick/slick.min.js"></script>
+
+  <script src="static/js/vinit.js" type="2021f99e26aa0ff2d9f9a196-text/javascript"></script>
+  <script src="static/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+    data-cf-settings="2021f99e26aa0ff2d9f9a196-|49" defer=""></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+    integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+    data-cf-beacon='{"rayId":"71667fa61c3d8a02","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}'
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/png" href="static/img/fav.png" />
+    <title>{{blog.name}}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick-theme.min.css' %}" />
+
+    <link href="{% static 'vendor/icons/feather.css' %}" rel="stylesheet" type="text/css" />
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    {% include 'goodwill/navbar.html' %}
+
+    <div class="py-4">
+        <div class="container">
+            <div class="row">
+
+                <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
+                    <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+                        <div class="py-4 px-3 border-bottom">
+                            <img src="/media/{{search_profile.pfp}}" class="img-fluid mt-2 rounded-circle"
+                                alt="Responsive image">
+                            <h5 class="font-weight-bold text-dark mb-1 mt-4">{{search_profile.name}}</h5>
+                            {% if search_profile.headline %}
+                            <p class="mb-0 text-muted">{{search_profile.headline}}</p>
+                            {% else %}
+                            <p class="mb-0 text-muted">No headlines Yet</p>
+                            {% endif %}
+                        </div>
+                        <div class="flex container">
+                            <div class="row justify-content-center">
+                                {% if search_profile.instagram or search_profile.youtube or search_profile.linkedin or search_profile.facebook %}
+                                {% if search_profile.instagram %}
+                                <a class="nav-link active" href={{search_profile.instagram}} target="_blank"><i
+                                        class="feather-instagram mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                                {% endif %}
+
+                                {% if search_profile.youtube %}
+                                <a class="nav-link active" href={{search_profile.youtube}} target="_blank"><i
+                                        class="feather-youtube mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                                {% endif %}
+
+                                {% if search_profile.linkedin %}
+                                <a class="nav-link active" href={{search_profile.linkedin}} target="_blank"><i
+                                        class="feather-linkedin mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                                {% endif %}
+
+                                {% if search_profile.facebook %}
+                                <a class="nav-link active" href={{search_profile.facebook}} target="_blank"><i
+                                        class="feather-facebook mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                                {% endif %}
+
+                                {% else %}
+                                <p class="mb-0 text-muted">No Socials Yet</p>
+                            
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="col-12 border-right">
+                                <p class="mb-0 text-black-50 small">Socials</p>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex">
+                            <div class="col-12 border-right p-3">
+                                <h6 class="font-weight-bold text-dark mb-1">358</h6>
+                                <p class="mb-0 text-black-50 small">Connections</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+
+                <main class="col col-xl-9 order-xl-2 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+                    <ul class="nav nav-justified border-bottom vinit-line-tab bg-white mb-2" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#about" role="tab"
+                                aria-controls="home" aria-selected="true"><i class="feather-user"></i> About</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#posts" role="tab"
+                                aria-controls="contact" aria-selected="false"><i class="feather-image"></i> Posts</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+    
+                        <!--Job Recommendation Section-->
+                        <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="box shadow-sm border rounded bg-white mb-3">
+                                <div class="row box-title border-bottom p-3">
+    
+                                    <h6 class="m-0">About You</h6>
+    
+                                </div>
+                                <div class="box-body p-3">
+                                    <p>{{search_profile.about}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box shadow-sm border rounded bg-white mb-3">
+    
+                                <div class="row box-title border-bottom p-3">
+    
+                                    <h6 class="m-0">Experience</h6>
+
+                                </div>
+                                {% for experience in experiences %}
+                                <div class="box-body p-3 border-bottom">
+                                    <div class="d-flex row job-item-header pb-2">
+                                        <div class="mr-2">
+                                            <h6 class="font-weight-bold text-dark mb-0">{{experience.designation}}</h6>
+                                            <div class="text-truncate text-primary" style="font-size:.9rem">
+                                                {{experience.company}}</div>
+                                            <div class="small text-gray-500">{{experience.joining_date}} to
+                                                {{experience.resigning_date}}</div>
+                                        </div>
+                                        <div class="d-flex mb-auto ml-auto">
+                                            <img class="img-fluid mr-2" src="/media/{{experience.img}}" alt="">
+                                        </div>
+    
+                                    </div>
+                                    <p class="mb-0">{{experience.about}}</p>
+                                </div>
+                                {% endfor %}
+    
+                            </div>
+    
+    
+                            <div class="box shadow-sm border rounded bg-white mb-3">
+                                <div class="row box-title border-bottom p-3">
+                                    <h6 class="m-0">Education</h6>
+                                </div>
+    
+                                {% for education in educations %}
+                                <div class="box-body p-3 border-bottom">
+                                    <div class="d-flex row job-item-header pb-2">
+                                        <div class="mr-2">
+                                            <h6 class="font-weight-bold text-dark mb-0">{{education.degree}}</h6>
+                                            <div class="text-truncate text-primary" style="font-size:.9rem">
+                                                {{education.university}}</div>
+                                            <div class="small text-gray-500">{{education.joining_date}} to
+                                                {{education.resigning_date}}</div>
+                                        </div>
+                                        <div class="d-flex mb-auto ml-auto">
+                                            <img class="img-fluid mr-2" src="/media/{{education.img}}" alt="">
+                                        </div>
+    
+                                    </div>
+                                    <p class="mb-0">{{education.about}}</p>
+                                </div>
+                                {% endfor %}
+    
+                            </div>
+                        </div>
+    
+                        <div class="tab-pane fade show" id="posts" role="tabpanel" aria-labelledby="home-tab">
+                        {% for post in posts %}
+                        <div class="box shadow-sm border rounded bg-white mb-3 vinit-post">
+                            <div class="p-3 d-flex align-items-center border-bottom vinit-post-header">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="/media/{{post.pfp}}" alt="" />
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{post.profile}}</div>
+                                    <div class="small text-gray-500">{{post.headline}}</div>
+                                </div>
+                                <span class="ml-auto small">{{post.created_on}}</span>
+                            </div>
+                            {% if post.img %}
+                            <div class="p-3 border-bottom vinit-post-body">
+                                <h6 class="mb-4">
+                                    {{post.caption}}
+                                </h6>
+                                <img class="img-fluid" src="/media/{{post.img}}" alt="" />
+                            </div>
+                            {% else %}
+                            <div class="p-3 border-bottom vinit-post-body">
+                                <h5 class="mb-0">
+                                    {{post.caption}}
+                                </h5>
+                            </div>
+                            {% endif %}
+                            <div class="p-3 border-bottom vinit-post-footer">
+
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i> 16</a>
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> 8</a>
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i> 2</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    </div>
+    
+                </main>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="static/vendor/jquery/jquery.min.js" type="2248bbb874aa0cbdfb3fe9a2-text/javascript"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"
+        type="2248bbb874aa0cbdfb3fe9a2-text/javascript"></script>
+
+    <script type="2248bbb874aa0cbdfb3fe9a2-text/javascript" src="static/vendor/slick/slick.min.js"></script>
+
+    <script src="static/js/vinit.js" type="2248bbb874aa0cbdfb3fe9a2-text/javascript"></script>
+    <script src="static/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="2248bbb874aa0cbdfb3fe9a2-|49" defer=""></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+        integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+        data-cf-beacon='{"rayId":"71667f99881a8a02","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

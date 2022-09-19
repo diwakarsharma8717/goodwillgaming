@@ -1,0 +1,112 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Notifications
+{% endblock title %}
+
+{% block body %}
+<div class="py-4">
+  <div class="container">
+    <div class="row">
+      <main class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="box shadow-sm border rounded bg-white mb-3">
+          <div class="box-title border-bottom p-3">
+            <h6 class="m-0">Notifications</h6>
+          </div>
+
+          <!--Switch Panel Between Job Recommendation and Connection Request-->
+          <ul class="nav nav-justified border-bottom vinit-line-tab" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#jobrecommendation" role="tab" aria-controls="home"
+                aria-selected="true"><i class="feather-zap"></i> Job Recommendations</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#connectionrequest" role="tab" aria-controls="contact"
+                aria-selected="false"><i class="feather-user-plus"></i> Connection Requests</a>
+            </li>
+          </ul>
+
+
+          <div class="tab-content" id="myTabContent">
+
+            <!--Job Recommendation Section-->
+            <div class="tab-pane fade show active" id="jobrecommendation" role="tabpanel" aria-labelledby="home-tab">
+              <div class="box-body p-0">
+                <div class="p-3 d-flex align-items-center border-bottom vinit-post-header">
+                  <div
+                    class="dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white"
+                    style="width: 3rem; height: 3rem">
+                    VZ
+                  </div>
+                  <div class="font-weight-bold mr-3">
+                    <div class="text-truncate">jobrecommendation Goes here</div>
+                    <div class="small">Content goes here</div>
+                  </div>
+                  <span class="ml-auto">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="feather-more-vertical"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-trash"></i> Delete
+                        </button>
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-x-circle"></i> Turn Off
+                        </button>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="text-right text-muted pt-2">5 mins</div>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <!--Connection Request Section-->
+            <div class="tab-pane fade show" id="connectionrequest" role="tabpanel" aria-labelledby="home-tab">
+              <div class="box-body p-0">
+                <div class="p-3 d-flex align-items-center border-bottom vinit-post-header">
+                  <div
+                    class="dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white"
+                    style="width: 3rem; height: 3rem">
+                    VZ
+                  </div>
+                  <div class="font-weight-bold mr-3">
+                    <div class="text-truncate">You have a request from {{sender}}</div>
+                    <div class="small">Content goes here</div>
+                  </div>
+                  <span class="ml-auto">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="feather-more-vertical"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-check-circle"></i> Accept Request
+                        </button>
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-x-circle"></i> Delete Request
+                        </button>
+                        
+                      </div>
+                    </div>
+                    <br />
+                    <div class="text-right text-muted pt-2">5 mins</div>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

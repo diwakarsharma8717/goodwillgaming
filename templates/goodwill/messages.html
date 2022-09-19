@@ -1,0 +1,156 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Home
+{% endblock title %}
+
+{% block body %}
+
+    <div class="py-4">
+        <div class="container">
+            <div class="row">
+
+                <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12">
+                    <div class="box shadow-sm rounded bg-white mb-3 vinit-chat">
+                        <h5 class="pl-3 pt-3 pr-3 border-bottom mb-0 pb-3">Messaging</h5>
+                        <div class="row m-0 chat-container">
+                            <div class="border-right col-md-4 col-sm-12  px-0">
+                                <div class="vinit-chat-left">
+                                    <div class="position-relative icon-form-control p-3 border-bottom">
+                                        <i class="feather-search position-absolute"></i>
+                                        <input placeholder="Search messages" type="text" class="form-control">
+                                    </div>
+                                    <div class="vinit-chat-list">
+
+
+                                        <a href="#messagebar">
+                                            <div
+                                                class="p-3 d-flex align-items-center border-bottom vinit-post-header overflow-hidden">
+
+                                                <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                                        src="img/p9.png" alt=""></div>
+                                                <div class="font-weight-bold mr-1 overflow-hidden">
+                                                    <div class="text-truncate">Ashley Briggs</div>
+                                                    <div class="small text-truncate overflow-hidden text-black-50"><i
+                                                            class="feather-check text-primary"></i> Pellentesque semper
+                                                        ex diam, at tristique ipsum varius sed. Pellentesque non metus
+                                                        ullamcorper</div>
+                                                </div>
+                                                <span class="ml-auto mb-auto">
+                                                    <div class="text-right text-muted pt-1 small">00:21PM</div>
+                                                </span>
+                                            </div>
+                                        </a>
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 px-0" id="messagebar">
+                                <div class="p-3 d-flex align-items-center  border-bottom vinit-post-header">
+                                    <div class="font-weight-bold mr-1 overflow-hidden">
+                                        <div class="text-truncate">
+                                            <h5>Chat Name</h5>
+                                        </div>
+                                        <div class="small text-truncate overflow-hidden text-black-50">Chat description
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="vinit-chat-box p-3 border-top border-bottom bg-light">
+                                    <div class="text-center my-3">
+                                        <span class="px-3 py-2 small bg-white shadow-sm  rounded">DEC 21, 2020</span>
+                                    </div>
+                                    <div class="d-flex align-items-center vinit-post-header">
+                                        <div class="dropdown-list-image mr-3 mb-auto"><img class="rounded-circle"
+                                                src="img/p1.png" alt=""></div>
+                                        <div class="mr-1">
+                                            <div class="text-truncate h6 mb-3">Sender
+                                            </div>
+                                            <p>Message goes here</p>
+
+                                            </p>
+                                        </div>
+                                        <span class="ml-auto mb-auto">
+                                            <div class="text-right text-muted pt-1 small">00:21PM</div>
+                                        </span>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <span class="px-3 py-2 small bg-white shadow-sm rounded">DEC 22, 2020</span>
+                                    </div>
+                                    <div class="d-flex align-items-center vinit-post-header">
+                                        <div class="dropdown-list-image mr-3 mb-auto"><img class="rounded-circle"
+                                                src="img/p8.png" alt=""></div>
+                                        <div class="mr-1">
+                                            <div class="text-truncate h6 mb-3">Receiver
+                                            </div>
+                                            <p>Message goes here</p>
+                                        </div>
+                                        <span class="ml-auto mb-auto">
+                                            <div class="text-right text-muted pt-1 small">00:21PM</div>
+                                        </span>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <span class="px-3 py-2 small bg-white shadow-sm rounded">DEC 23, 2020</span>
+                                    </div>
+                                    <div class="d-flex align-items-center vinit-post-header">
+                                        <div class="dropdown-list-image mr-3 mb-auto"><img class="rounded-circle"
+                                                src="img/p8.png" alt=""></div>
+                                        <div class="mr-1">
+                                            <div class="text-truncate h6 mb-3">Sender
+                                            </div>
+                                            <p>Message goes here</p>
+                                        </div>
+                                        <span class="ml-auto mb-auto">
+                                            <div class="text-right text-muted pt-1 small">00:21PM</div>
+                                        </span>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <span class="px-3 py-2 small bg-white shadow-sm rounded">DEC 24, 2020</span>
+                                    </div>
+                                    <div class="d-flex align-items-center vinit-post-header">
+                                        <div class="dropdown-list-image mr-3 mb-auto"><img class="rounded-circle"
+                                                src="img/p8.png" alt=""></div>
+                                        <div class="mr-1">
+                                            <div class="text-truncate h6 mb-3">Receiver
+                                            </div>
+                                            <p>Message goes here</p>
+                                        </div>
+                                        <span class="ml-auto mb-auto">
+                                            <div class="text-right text-muted pt-1 small">00:21PM</div>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="w-100 border-top border-bottom">
+                                    <textarea placeholder="Write a message…"
+                                        class="form-control border-0 p-3 shadow-none" rows="2"></textarea>
+                                </div>
+                                <div class="p-3 d-flex align-items-center">
+                                    <div class="overflow-hidden">
+
+                                    </div>
+                                    <span class="mr-auto">
+                                        <button type="button" class="btn btn-primary btn-sm rounded">
+                                            <i class="feather-send"></i> Send
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

@@ -1,0 +1,218 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Profile
+{% endblock title %}
+
+{% block body %}
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+
+            <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
+                <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+                    <div class="py-4 px-3 border-bottom">
+                        <img src="/media/{{profile.pfp}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+                        <h5 class="font-weight-bold text-dark mb-1 mt-4">{{request.user.get_full_name}}</h5>
+                        {% if profile.headline %}
+                        <p class="mb-0 text-muted">{{profile.headline}}</p>
+                        {% else %}
+                        <a class="font-weight-bold p-3 d-block" href="{% url 'edit_profile' %}">Add a Headline</a>
+                        {% endif %}
+                    </div>
+                    <div class="flex container">
+                        <div class="row justify-content-center">
+                            {% if profile.instagram and profile.youtube and profile.linkedin and profile.facebook %}
+                            {% if profile.instagram %}
+                            <a class="nav-link active" href={{profile.instagram}} target="_blank"><i
+                                    class="feather-instagram mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                            {% endif %}
+
+                            {% if profile.youtube %}
+                            <a class="nav-link active" href={{profile.youtube}} target="_blank"><i
+                                    class="feather-youtube mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                            {% endif %}
+
+                            {% if profile.linkedin %}
+                            <a class="nav-link active" href={{profile.linkedin}} target="_blank"><i
+                                    class="feather-linkedin mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                            {% endif %}
+
+                            {% if profile.facebook %}
+                            <a class="nav-link active" href={{profile.facebook}} target="_blank"><i
+                                    class="feather-facebook mr-2"></i><span class="d-none d-lg-inline"></span></a>
+                            {% endif %}
+
+                            {% else %}
+                            <a class="font-weight-bold p-3 d-block" href="{% url 'edit_profile' %}">Add Socials</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="col-12 border-right">
+                            <p class="mb-0 text-black-50 small">Socials</p>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex">
+                        <div class="col-12 border-right p-3">
+                            <h6 class="font-weight-bold text-dark mb-1">358</h6>
+                            <p class="mb-0 text-black-50 small">Connections</p>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden border-top">
+                        <a class="font-weight-bold p-3 d-block" href="{% url 'edit_profile' %}"> <i
+                                class="feather-edit mr-2"></i>Edit Profile </a>
+                    </div>
+                    <div class="overflow-hidden border-top">
+
+                        <a class="font-weight-bold p-3 d-block" href="{% url 'log_out' %}"> Log Out </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <main class="col col-xl-9 order-xl-2 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+                <ul class="nav nav-justified border-bottom vinit-line-tab bg-white mb-2" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#about" role="tab"
+                            aria-controls="home" aria-selected="true"><i class="feather-user"></i> About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#posts" role="tab"
+                            aria-controls="contact" aria-selected="false"><i class="feather-image"></i> Posts</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <!--Job Recommendation Section-->
+                    <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="box shadow-sm border rounded bg-white mb-3">
+                            <div class="row box-title border-bottom p-3">
+
+                                <h6 class="m-0">About You</h6>
+
+
+                                <a class="d-block ml-auto mb-auto" href="{% url 'edit_about' %}"><i
+                                        class="feather-edit-2 mr-2"></i></a>
+
+                            </div>
+                            <div class="box-body p-3">
+                                <p>{{profile.about}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box shadow-sm border rounded bg-white mb-3">
+
+                            <div class="row box-title border-bottom p-3">
+
+                                <h6 class="m-0">Experience</h6>
+
+                                <a class="d-block ml-auto mb-auto" href="{% url 'add_experience' %}"><i
+                                        class="feather-plus mr-2"></i></a>
+                            </div>
+                            {% for experience in experiences %}
+                            <div class="box-body p-3 border-bottom">
+                                <div class="d-flex row job-item-header pb-2">
+                                    <div class="mr-2">
+                                        <h6 class="font-weight-bold text-dark mb-0">{{experience.designation}}</h6>
+                                        <div class="text-truncate text-primary" style="font-size:.9rem">
+                                            {{experience.company}}</div>
+                                        <div class="small text-gray-500">{{experience.joining_date}} to
+                                            {{experience.resigning_date}}</div>
+                                    </div>
+                                    <div class="d-flex mb-auto ml-auto">
+                                        <img class="img-fluid mr-2" src="/media/{{experience.img}}" alt="">
+                                        <a class="d-block" href="{% url 'edit_experience' experience.id %}"><i
+                                                class="feather-edit mr-2"></i></a>
+                                    </div>
+
+                                </div>
+                                <p class="mb-0">{{experience.about}}</p>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="box shadow-sm border rounded bg-white mb-3">
+                            <div class="row box-title border-bottom p-3">
+                                <h6 class="m-0">Education</h6>
+                                <a class="d-block ml-auto mb-auto" href="{% url 'add_education' %}"><i
+                                        class="feather-plus mr-2"></i></a>
+                            </div>
+
+                            {% for education in educations %}
+                            <div class="box-body p-3 border-bottom">
+                                <div class="d-flex row job-item-header pb-2">
+                                    <div class="mr-2">
+                                        <h6 class="font-weight-bold text-dark mb-0">{{education.degree}}</h6>
+                                        <div class="text-truncate text-primary" style="font-size:.9rem">
+                                            {{education.university}}</div>
+                                        <div class="small text-gray-500">{{education.joining_date}} to
+                                            {{education.resigning_date}}</div>
+                                    </div>
+                                    <div class="d-flex mb-auto ml-auto">
+                                        <img class="img-fluid mr-2" src="/media/{{education.img}}" alt="">
+                                        <a class="d-block" href="{% url 'edit_education' education.id %}"><i
+                                                class="feather-edit mr-2"></i></a>
+                                    </div>
+
+                                </div>
+                                <p class="mb-0">{{education.about}}</p>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="posts" role="tabpanel" aria-labelledby="home-tab">
+                        {% for post in posts %}
+                        <div class="box shadow-sm border rounded bg-white mb-3 vinit-post">
+                            <div class="p-3 d-flex align-items-center border-bottom vinit-post-header">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="/media/{{post.pfp}}" alt="" />
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{post.profile}}</div>
+                                    <div class="small text-gray-500">{{post.headline}}</div>
+                                </div>
+                                <span class="ml-auto small">{{post.created_on}}</span>
+                            </div>
+                            {% if post.img %}
+                            <div class="p-3 border-bottom vinit-post-body">
+                                <h6 class="mb-4">
+                                    {{post.caption}}
+                                </h6>
+                                <img class="img-fluid" src="/media/{{post.img}}" alt="" />
+                            </div>
+                            {% else %}
+                            <div class="p-3 border-bottom vinit-post-body">
+                                <h5 class="mb-0">
+                                    {{post.caption}}
+                                </h5>
+                            </div>
+                            {% endif %}
+                            <div class="p-3 border-bottom vinit-post-footer">
+
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i> 16</a>
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> 8</a>
+                                <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i> 2</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

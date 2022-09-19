@@ -1,0 +1,90 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Add-Experience
+{% endblock title %}
+
+{% block body %}
+
+<div class="bg-white">
+    <div class="container">
+        <div class="row justify-content-center align-items-center d-flex">
+            <div class="col-md-4 mx-auto">
+                <div class="vinit-login py-4">
+                    <div class="text-center mb-4">
+                        <h3 class="font-weight-bold mt-3">Let's add an Experience {{request.user.get_short_name}}</h3>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label class="mb-1">Add Designation</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-user position-absolute"></i>
+                                <input type="text" class="form-control" id="designation" name="designation"
+                                    value="{{experience.designation}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1">Add Company</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-home position-absolute"></i>
+                                <input type="text" class="form-control" id="company" name="company"
+                                    value="{{experience.company}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1">Add your Company Image</label>
+                            <div class="position-relative icon-form-control">
+
+                                <input type="file" class="btn btn-primary btn-block text-uppercase" id="myfile"
+                                    name="myfile" /> <br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1">Add Joining Date</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-calendar position-absolute"></i>
+                                <input type="text" class="form-control" id="joining_date" name="joining_date"
+                                    value="{{experience.joining_date}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1">Add Resigning Date</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-calendar position-absolute"></i>
+                                <input type="text" class="form-control" id="resigning_date" name="resigning_date"
+                                    value="{{experience.resigning_date}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1">Add About</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-clipboard position-absolute"></i>
+                                <input type="text" class="form-control" id="about" name="about"
+                                    value="{{experience.about}}" required>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Add Experience
+                        </button>
+
+                        <div class="py-3 d-flex align-item-center">
+
+                            <span class="m-auto"> Want to skip this for now ? <a class="font-weight-bold"
+                                    href="{% url 'profile' %}">My Profile</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

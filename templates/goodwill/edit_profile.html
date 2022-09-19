@@ -1,0 +1,88 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Edit-Profile
+{% endblock title %}
+
+{% block body %}
+
+<div class="bg-white">
+    <div class="container">
+        <div class="row justify-content-center align-items-center d-flex">
+            <div class="col-md-4 mx-auto">
+                <div class="vinit-login py-4">
+                    <div class="text-center mb-4">
+                        <h3 class="font-weight-bold mt-3">Let's Update your profile {{request.user.get_short_name}}</h3>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Update your Profile Picture</label>
+                            <div class="position-relative icon-form-control">
+
+                                <input type="file" class="btn btn-primary btn-block text-uppercase" id="myfile"
+                                    name="myfile" /> <br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Update you headline</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-clipboard position-absolute"></i>
+                                <input type="text" class="form-control" id="headline" name="headline" value="{{profile.headline}}"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Instgram</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-instagram position-absolute"></i>
+                                <input type="url" class="form-control" id="instagram" name="instagram" value="{{profile.instagram}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Youtube</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-youtube position-absolute"></i>
+                                <input type="url" class="form-control" id="youtube" name="youtube" value="{{profile.youtube}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">LinkedIn</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-linkedin position-absolute"></i>
+                                <input type="url" class="form-control" id="linkedin" name="linkedin" value="{{profile.linkedin}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Facebook</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-facebook position-absolute"></i>
+                                <input type="url" class="form-control" id="facebook" name="facebook" value="{{profile.facebook}}" required>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+
+                </div>
+                <button class="btn btn-primary btn-block text-uppercase" type="submit"> Update Profile
+                </button>
+
+                <div class="py-3 d-flex align-item-center">
+
+                    <span class="m-auto"> Want to skip this for now ? <a class="font-weight-bold"
+                            href="{% url 'profile' %}">My Profile</a></span>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock body %}

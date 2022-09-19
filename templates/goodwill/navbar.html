@@ -1,0 +1,124 @@
+<nav class="navbar navbar-expand navbar-light bg-light vinit-nav-top p-0">
+    <div class="container ml-auto">
+        <div class="row w-100">
+
+            <div class="col-md-5 p-2">
+
+                <div class="d-flex justify-content-evenly"> <a class="navbar-brand mr-2" href="{% url 'home' %}"><img src=""
+                            alt="">GoodWill Gaming
+                    </a>
+                    <form class="form-inline mw-100 navbar-search" method="GET" action="/search">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-white shadow-sm border-0"
+                                placeholder="Search people, jobs & more..." aria-label="Search"
+                                aria-describedby="basic-addon2" id="search" name="search">
+                            <div class="input-group-append">
+                                <button class="btn" type="submit">
+                                    <i class="feather-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-7">
+                <ul class="navbar-nav ml-auto d-flex align-items-center justify-content-end">
+
+                    {% if request.path == '/home' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}"><i class="feather-home mr-2"></i><span
+                                class="d-none d-lg-inline">Home</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="feather-home mr-2"></i><span
+                                class="d-none d-lg-inline">Home</span></a>
+                    </li>
+                    {% endif %}
+
+                    {% if request.path == '/network' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'network' %}"><i class="feather-users mr-2"></i><span
+                                class="d-none d-lg-inline">Networks</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'network' %}"><i class="feather-users mr-2"></i><span
+                                class="d-none d-lg-inline">Networks</span></a>
+                    </li>
+                    {% endif %}
+
+                    {% if request.path == '/jobs' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'jobs' %}"><i class="feather-briefcase mr-2"></i><span
+                                class="d-none d-lg-inline">Jobs</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'jobs' %}"><i class="feather-briefcase mr-2"></i><span
+                                class="d-none d-lg-inline">Jobs</span></a>
+                    </li>
+                    {% endif %}
+
+                    {% if request.path == '/message' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'message' %}"><i
+                                class="feather-message-square mr-2"></i><span
+                                class="d-none d-lg-inline">Messaging</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'message' %}"><i class="feather-message-square mr-2"></i><span
+                                class="d-none d-lg-inline">Messaging</span></a>
+                    </li>
+                    {% endif %}
+
+                    {% if request.path == '/notifications' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'notifications' %}"><i class="feather-bell mr-2"></i><span
+                                class="d-none d-lg-inline">Notifications</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'notifications' %}"><i class="feather-bell mr-2"></i><span
+                                class="d-none d-lg-inline">Notifications</span></a>
+                    </li>
+                    {% endif %}
+
+
+                    <li class="nav-item dropdown no-arrow ml-1 vinit-profile-dropdown">
+                        <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="feather-align-justify mr-2"></i><span class="d-none d-lg-inline">Profile</span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                            <div class="p-3 d-flex align-items-center">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="/media/{{profile.pfp}}" alt="">
+
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{request.user}}</div>
+                                    <div class="small text-gray-500">UI/UX Designer</div>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'profile' %}"><i class="feather-edit mr-1"></i> My
+                                Account</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'log_out' %}"><i class="feather-log-out mr-1"></i>
+                                Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</nav>

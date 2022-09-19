@@ -1,0 +1,46 @@
+{% extends 'goodwill/base.html' %}
+
+{% load static %}
+
+{% block title %} Edit-About
+{% endblock title %}
+
+{% block body %}
+
+<div class="bg-white">
+    <div class="container">
+        <div class="row justify-content-center align-items-center d-flex">
+            <div class="col-md-4 mx-auto">
+                <div class="vinit-login py-4">
+                    <div class="text-center mb-4">
+                        <h3 class="font-weight-bold mt-3">Let's Update your about {{request.user.get_short_name}}</h3>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label class="mb-1">Update your About</label>
+                            <div class="position-relative icon-form-control">
+                                <i class="feather-clipboard position-absolute"></i>
+                                <input type="text" class="form-control" id="about" name="about"
+                                    value="{{profile.about}}" required>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block text-uppercase" type="submit"> Update About
+                        </button>
+
+                        <div class="py-3 d-flex align-item-center">
+
+                            <span class="m-auto"> Want to skip this for now ? <a class="font-weight-bold"
+                                    href="{% url 'profile' %}">My Profile</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
